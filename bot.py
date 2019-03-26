@@ -21,13 +21,15 @@ def run_bot(r, submissions_replied_to):
 
     for submission in r.subreddit('emportugues').new(limit=1000):
         if submission.is_self is False and submission.url not in submissions_replied_to:
-            sub_url = submission.url
+            submission_url = submission.url
+            if submission_url.endswith("/"): sub_url = submission.url[:-1]
+            else: sub_url = submission_url
             sub_name = sub_url.replace("https://www.reddit.com/r/", "")
             sub = r.subreddit(sub_name).display_name
             
-            print ("Encontrada postagem com o seguinte link para subreddit: " + submission.url + ".")
+            print ("Encontrada postagem com o seguinte link para subreddit: " + sub_url + ".")
             
-            submissions_replied_to.append(submission.url)
+            submissions_replied_to.append(sub_url)
             
             print ("Coletando dados sobre o subreddit " + r.subreddit(sub).display_name_prefixed + "...")
        
@@ -47,7 +49,7 @@ def run_bot(r, submissions_replied_to):
             else: subs = subscribers + " usuários subscritos"
             #wiki disponível
             wiki_enabled = r.subreddit(sub).wiki_enabled
-            if wiki_enabled == True:  wiki = "[wiki disponível](" + submission.url + "/wiki/index)" 
+            if wiki_enabled == True:  wiki = "[wiki disponível](" + sub_url + "/wiki/index)" 
             else: wiki = "wiki indisponível"
             #tipo de acesso
             subreddit_type = r.subreddit(sub).subreddit_type
@@ -109,7 +111,7 @@ def run_bot(r, submissions_replied_to):
             print ("Comentário postado com sucesso!")
             
             with open ("submissions_replied_to.txt", "a") as f:
-                f.write(submission.url + "\n")
+                f.write(sub_url + "\n")
                 print ("Endereço adicionado à listagem.")
     
     print (submissions_replied_to)
