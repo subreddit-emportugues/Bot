@@ -24,7 +24,9 @@ def run_bot(r, submissions_replied_to):
             submission_url = submission.url
             if submission_url.endswith("/"): sub_url = submission.url[:-1]
             else: sub_url = submission_url
-            sub_name = sub_url.replace("https://www.reddit.com/r/", "")
+            subreddit_name = sub_url
+            if subreddit_name.startswith("https://www.reddit.com/r/"): sub_name = sub_url.replace("https://www.reddit.com/r/", "")
+            if subreddit_name.startswith("https://reddit.com/r/"): sub_name = sub_url.replace("https://reddit.com/r/", "")
             sub = r.subreddit(sub_name).display_name
             
             print ("Encontrada postagem com o seguinte link para subreddit: " + sub_url + ".")
@@ -60,8 +62,8 @@ def run_bot(r, submissions_replied_to):
             if subreddit_type == "archived": type = "conteúdo arquivado"            
             #tipo de postagem
             submission_type = r.subreddit(sub).submission_type
-            if submission_type == "any": subm = "permite textos e hiperligações"
-            if submission_type == "link": subm = "permite apenas hiperligações"
+            if submission_type == "any": subm = "permite textos e links"
+            if submission_type == "link": subm = "permite apenas links"
             if submission_type == "text": subm = "permite apenas textos"
             #permissão de imagens, allow_videogifs e vídeos
             allow_images = r.subreddit(sub).allow_images
