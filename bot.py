@@ -29,9 +29,9 @@ def run_bot(r, submissions_replied_to):
             if subreddit_name.startswith("https://reddit.com/r/"): sub_name = sub_url.replace("https://reddit.com/r/", "")
             sub = r.subreddit(sub_name).display_name
             
-            print ("Encontrada postagem com o seguinte link para subreddit: " + sub_url + ".")
+            print ("Encontrada postagem com o seguinte link para subreddit: " + submission.url + ".")
             
-            submissions_replied_to.append(sub_url)
+            submissions_replied_to.append(submission.url)
             
             print ("Coletando dados sobre o subreddit " + r.subreddit(sub).display_name_prefixed + "...")
        
@@ -95,7 +95,7 @@ def run_bot(r, submissions_replied_to):
             
             print ("Preparando a tabela para comentar na postagem...")
                         
-            submission.reply(
+            comment = submission.reply(
             subr + "\n" +
             ":-: | \n" +
             desc + " | \n" +
@@ -110,10 +110,12 @@ def run_bot(r, submissions_replied_to):
             quar + " | \n \n" +
             "^(Eu sou um bô, blipe, blupe. | [Sub](https://www.reddit.com/r/EmPortugues) | [Site](https://emportugues.org/) | [Aplicativo](https://play.google.com/store/apps/details?id=org.emportugues.aplicativo) | [Organização](https://github.com/subreddit-emportugues) | [Mensagem](http://reddit.com/message/compose/?to=BoEmPortugues&subject=Eu não sou um bô.))")
             
-            print ("Comentário postado com sucesso!")
+            comment.mod.distinguish(how='yes', sticky=True)
+            
+            print ("Comentário postado e fixado com sucesso!")
             
             with open ("submissions_replied_to.txt", "a") as f:
-                f.write(sub_url + "\n")
+                f.write(submission.url + "\n")
                 print ("Endereço adicionado à listagem.")
     
     print (submissions_replied_to)
