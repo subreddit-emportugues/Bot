@@ -92,6 +92,8 @@ def run_bot(r, submissions_replied_to):
             quarantine = r.subreddit(sub).quarantine
             if quarantine == False: quar = "em estado normal"
             else: quar = "em estado de quarentena"
+            #versão antiga
+            oldr = "[versão antiga](https://old.reddit.com/r/" + r.subreddit(sub).display_name + ")"
             
             print ("Preparando a tabela para comentar na postagem...")
                         
@@ -107,7 +109,8 @@ def run_bot(r, submissions_replied_to):
             mult + " | \n" + 
             flair + " | \n" + 
             nsfw + " | \n" +             
-            quar + " | \n \n" +
+            quar + " | \n" +
+            oldr + " | \n \n" +
             "^(Eu sou um bô, blipe, blupe. | [Sub](https://www.reddit.com/r/EmPortugues) | [Site](https://emportugues.org/) | [Aplicativo](https://play.google.com/store/apps/details?id=org.emportugues.aplicativo) | [Organização](https://github.com/subreddit-emportugues) | [Mensagem](http://reddit.com/message/compose/?to=BoEmPortugues&subject=Eu não sou um bô.))")
             
             comment.mod.distinguish(how='yes', sticky=True)
