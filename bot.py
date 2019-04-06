@@ -44,6 +44,12 @@ def run_bot(r, submissions_replied_to):
             #data de crialção
             created_utc = int(r.subreddit(sub).created_utc)
             crea = "criado em " + datetime.utcfromtimestamp(created_utc).strftime("%d/%m/%Y às %H:%M:%S")
+            #quantidade de moderadores
+            moderators = [moderators for moderators in r.subreddit(sub).moderator()]
+            mod_list = len(moderators)
+            if mod_list == 0: mods = "nenhum(a) moderador(a)"
+            if mod_list == 1: mods = "apenas um(a) moderador(a)"
+            if mod_list > 1: mods = str(mod_list) + " moderadores"
             #quantidade de subscrições
             subscribers = str(r.subreddit(sub).subscribers)
             if subscribers == 0: subs = "nenhum usuário subscrito"
@@ -102,6 +108,7 @@ def run_bot(r, submissions_replied_to):
             ":-: | \n" +
             desc + " | \n" +
             crea + " | \n" +
+            mods + " | \n" +
             subs + " | \n" +
             wiki  + " | \n" +
             type  + " | \n" +
