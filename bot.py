@@ -64,7 +64,7 @@ def run_bot(r, submissions_replied_to):
             submission_type = r.subreddit(sub).submission_type
             if submission_type == "any": subm = "permite textos e links"
             if submission_type == "link": subm = "permite apenas links"
-            if submission_type == "text": subm = "permite apenas textos"
+            if submission_type == "self": subm = "permite apenas textos"
             #permissão de imagens, allow_videogifs e vídeos
             allow_images = r.subreddit(sub).allow_images
             allow_videogifs = r.subreddit(sub).allow_videogifs
