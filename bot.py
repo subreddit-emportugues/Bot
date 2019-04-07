@@ -1,16 +1,11 @@
 import praw
-import config
 import os
 from datetime import datetime
 import sys  
 
-def bot_login():
+def __init__():
     print ("Conectando...")
-    r = praw.Reddit(username = config.username,
-                password = config.password,
-                client_id = config.client_id,
-                client_secret = config.client_secret,
-                user_agent = "reddit:r/EmPortugues:vAlpha (by u/BoEmPortugues)")
+    r = praw.Reddit("bot")
     print ("Conectado.")
 
     return r
@@ -143,7 +138,7 @@ def get_saved_comments():
 
     return submissions_replied_to
 
-r = bot_login()
+r = __init__()
 submissions_replied_to = get_saved_comments()
 print (submissions_replied_to)
 
