@@ -10,11 +10,11 @@ def __init__():
 
     return r
 
-def run_bot(r, submissions_replied_to):
+def run_bot(r, post_links):
     print ("Verificiando as 1000 postagens mais recentes em busca de links...")
 
     for submission in r.subreddit('EmPortugues').new(limit=1000):
-        if submission.is_self is False and submission.url not in submissions_replied_to:
+        if submission.is_self is False and submission.url not in post_links:
             submission_url = submission.url
             if submission_url.endswith("/"): sub_url = submission.url[:-1]
             else: sub_url = submission_url
@@ -25,7 +25,7 @@ def run_bot(r, submissions_replied_to):
             
             print ("Encontrada postagem com o seguinte link para subreddit: " + submission.url + ".")
             
-            submissions_replied_to.append(submission.url)
+            post_links.append(submission.url)
             
             print ("Coletando dados sobre o subreddit " + r.subreddit(sub).display_name_prefixed + "...")
        
@@ -118,29 +118,33 @@ def run_bot(r, submissions_replied_to):
             
             print ("Comentário postado e fixado!")
             
-            with open ("submissions_replied_to.txt", "a") as f:
+            with open ("post_links.txt", "a") as f:
                 f.write(submission.url + "\n")
-                print ("Endereço adicionado à listagem.")
+                print ("Link adicionado à listagem do robô.")
+                
+            with open ("subreddits_list.txt", "a") as f:
+                f.write(sub + "\n")
+                print ("Subreddit adicionado à listagem do rastreador.") 
     
-    print (submissions_replied_to)
+    print (post_links)
 
     print ("Procedimento terminado com sucesso!")
     sys.exit(0)
 
 def get_saved_comments():
-    if not os.path.isfile("submissions_replied_to.txt"):
-        submissions_replied_to = []
+    if not os.path.isfile("post_links.txt"):
+        post_links = []
     else:
-        with open("submissions_replied_to.txt", "r") as f:
-            submissions_replied_to = f.read()
-            submissions_replied_to = submissions_replied_to.split("\n")
-            submissions_replied_to = list(filter(None, submissions_replied_to))
+        with open("post_links.txt", "r") as f:
+            post_links = f.read()
+            post_links = post_links.split("\n")
+            post_links = list(filter(None, post_links))
 
-    return submissions_replied_to
+    return post_links
 
 r = __init__()
-submissions_replied_to = get_saved_comments()
-print (submissions_replied_to)
+post_links = get_saved_comments()
+print (post_links)
 
 while True:
-    run_bot(r, submissions_replied_to)
+    run_bot(r, post_links)
