@@ -1,7 +1,10 @@
 import praw
 import os
 from datetime import datetime
-import sys  
+import urllib3
+import sys
+
+urllib3.disable_warnings()
 
 def __init__():
     print ("Conectando...")
