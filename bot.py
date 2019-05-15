@@ -44,25 +44,18 @@ def run_bot(r, post_links):
             #quantidade de moderadores
             moderators = [moderators for moderators in r.subreddit(sub).moderator()]
             mod_list = len(moderators)
-            if mod_list == 0: mods = "nenhum(a) moderador(a)"
-            if mod_list == 1: mods = "apenas um(a) moderador(a)"
+            if mod_list == 0: mods = "nenhum moderador"
+            if mod_list == 1: mods = "apenas um moderador"
             if mod_list > 1: mods = str(mod_list) + " moderadores"
-            #quantidade de subscrições
-            subscribers = str(r.subreddit(sub).subscribers)
+            #quantidade de membros
+            subscribers = str(format(r.subreddit(sub).subscribers, ",d").replace(",","."))
             if subscribers == 0: subs = "nenhum membro na comunidade"
             if subscribers == 1: subs = "só um membro na comunidade"
             else: subs = subscribers + " membros na comunidade"
             #wiki disponível
             wiki_enabled = r.subreddit(sub).wiki_enabled
-            if wiki_enabled == True:  wiki = "[wiki disponível](" + sub_url + "/wiki/index)" 
-            else: wiki = "wiki indisponível"
-            #tipo de acesso
-            subreddit_type = r.subreddit(sub).subreddit_type
-            if subreddit_type == "public": type = "conteúdo público" 
-            if subreddit_type == "restricted": type = "conteúdo restrito"
-            if subreddit_type == "private": type = "conteúdo privado"
-            if subreddit_type == "gold_restricted": type = "conteúdo premium"
-            if subreddit_type == "archived": type = "conteúdo arquivado"            
+            if wiki_enabled == True:  wiki = "[sim](" + sub_url + "/wiki/index)" 
+            else: wiki = "não"           
             #tipo de postagem
             submission_type = r.subreddit(sub).submission_type
             if submission_type == "any": subm = "permite textos e links"
@@ -83,39 +76,34 @@ def run_bot(r, post_links):
             #flair para postagens para usuários
             ufla = r.subreddit(sub).can_assign_user_flair
             lfla = r.subreddit(sub).can_assign_link_flair
-            if lfla == True and ufla == True: flair = "disponibiliza flairs para usários e postagens" 
-            if lfla == True and ufla == False: flair = "disponibiliza flairs somente para postagens" 
-            if lfla == False and ufla == True: flair = "disponibiliza flairs somente para usuários"    
-            if lfla == False and ufla == False: flair = "não disponibilzia flairs para postagens nem usuários"           
+            if lfla == True and ufla == True: flair = "para usários e postagens" 
+            if lfla == True and ufla == False: flair = "somente para postagens" 
+            if lfla == False and ufla == True: flair = "somente para usuários"    
+            if lfla == False and ufla == False: flair = "indisponível"           
             #conteúdo adulto
             over18 = r.subreddit(sub).over18
-            if over18 == False: nsfw = "seguro para o trabalho" 
-            else: nsfw = "não seguro para o trabalho"
-            #em quarentena
-            quarantine = r.subreddit(sub).quarantine
-            if quarantine == False: quar = "em estado normal"
-            else: quar = "em estado de quarentena"
+            if over18 == False: nsfw = "não" 
+            else: nsfw = "sim"
             #versão antiga
-            oldr = "[versão antiga](https://old.reddit.com/r/" + r.subreddit(sub).display_name + ")"
+            oldr = "[link](https://old.reddit.com/r/" + r.subreddit(sub).display_name + ")"
             
-            print ("Preparando a tabela para comentar na postagem...")
+            print ("Preparando o texto para comentar na postagem...")
                         
             comment = submission.reply(
-            subr + "\n" +
-            ":-: | \n" +
-            desc + " | \n" +
-            crea + " | \n" +
-            mods + " | \n" +
-            subs + " | \n" +
-            wiki  + " | \n" +
-            type  + " | \n" +
-            subm  + " | \n" +          
-            mult + " | \n" + 
-            flair + " | \n" + 
-            nsfw + " | \n" +             
-            quar + " | \n" +
-            oldr + " | \n \n" +
-            "^(Eu sou um bô, blipe, blupe. | [Sub](https://www.reddit.com/r/EmPortugues) | [Site](https://emportugues.org/) | [Aplicativo](https://play.google.com/store/apps/details?id=org.emportugues.aplicativo) | [Organização](https://github.com/subreddit-emportugues) | [Mensagem](http://reddit.com/message/compose/?to=BoEmPortugues&subject=Eu não sou um bô.))")
+            "#" + subr + "\n\n" +
+            "___ \n\n" +
+            "**Descrição oficial:** " + desc + "\n\n" +
+            "**Data de criação:** " + crea + "\n\n" +
+            "**Quantidade de moderadores:** " + mods + "\n\n" +
+            "**Quantidade de membros:** " + subs + "\n\n" +
+            "**Disponibiliza wiki:** " + wiki  + "\n\n" +
+            "**Tipo de postagem:** " + subm  + "\n\n" +          
+            "**Mídias permitidas:** " + mult + "\n\n" + 
+            "**Disponibilidade de flairs:** " + flair + "\n\n" + 
+            "**NSFW:** " + nsfw + "\n\n" +             
+            "**Versão antiga:** " + oldr + "\n\n" +
+            "___ \n\n" +
+            "^(Eu sou um bô, blipe, blupe. | [Sub](https://www.reddit.com/r/EmPortugues) | [Site](https://emportugues.org/) | [Aplicativo](https://play.google.com/store/apps/details?id=org.emportugues.aplicativo) | [Organização](https://github.com/subreddit-emportugues) | [Mensagem](https://reddit.com/message/compose/?to=BoEmPortugues&subject=Eu não sou um bô.))")
             
             comment.mod.distinguish(how='yes', sticky=True)
             
