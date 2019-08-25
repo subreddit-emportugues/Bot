@@ -12,7 +12,7 @@ def __init__():
     return r
     
 def run_bot(r, subreddits_list, replies_list, posts_list):
-    print ("1/3: comentando as postagens recentes e salvando subs, postagens e comentários...")
+    print ("1/4: comentando as postagens recentes e salvando subs, postagens e comentários...")
     for submission in r.subreddit('EmPortugues').new(limit=1000):
         if submission.is_self is False:
             #subreddit
@@ -104,7 +104,7 @@ def run_bot(r, subreddits_list, replies_list, posts_list):
                     f.write(submission.id + "\n")
                 with open ("replies_list.txt", "a") as f:
                     f.write(comment.id + "\n")
-    print ("2/3: editando cada um dos comentários antigos salvos com informações recentes...")
+    print ("2/4: editando cada um dos comentários antigos salvos com informações recentes...")
     for reply in replies_list:
         comment = r.comment(reply)
         #subreddit
@@ -186,7 +186,7 @@ def run_bot(r, subreddits_list, replies_list, posts_list):
             "**Versão antiga:** " + oldr + "\n\n" +
             "___ \n\n" +
             "^(Eu sou um bô, blipe, blupe. | [Sub](https://www.reddit.com/r/EmPortugues) | [Site](https://emportugues.org/) | [Aplicativo](https://play.google.com/store/apps/details?id=org.emportugues.aplicativo) | [Organização](https://github.com/subreddit-emportugues) | [Mensagem](https://reddit.com/message/compose/?to=BoEmPortugues&subject=Eu não sou um bô.))")
-    print ("3/3: atualizando flairs de todas as postagens publicadas salvas com dados novos...")
+    print ("3/4: atualizando flairs de todas as postagens publicadas salvas com dados novos...")
     for post in posts_list:
         submission = r.submission(post)
         #subreddit
@@ -234,6 +234,17 @@ def run_bot(r, subreddits_list, replies_list, posts_list):
             elif mod_list == 0: flair = submission.flair.select('04969b72-2f47-11e9-b0a9-0e8bb92aff24')
             #inativo
             else: flair = submission.flair.select('fd76536e-2f46-11e9-8434-0e74c00272c4')
+    print ("4/4: procurando repostagens e comentando em cada uma para chamar o automoderador...")
+    for submission in r.subreddit('EmPortugues').new(limit=1000):
+        with open("posts_list.txt", "r") as f:
+            posts_list = f.read()
+            posts_list = posts_list.split("\n")
+            posts_list = list(filter(None, posts_list))
+        if submission.is_self is False and submission not in posts_list:
+            #repostagem
+            comment = submission.reply("REEEEEEE")
+            #comentário fixado
+            comment.mod.distinguish(how='yes', sticky=True)
     print ("Procedimento terminado com sucesso!")
     sys.exit(0)
 
