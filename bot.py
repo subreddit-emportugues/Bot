@@ -273,7 +273,7 @@ def get_replies_list():
     if not os.path.isfile('../data/replies.txt'):
         replies_list = []
     else:
-        with open('../data/replies', 'r') as f:
+        with open('../data/replies.txt', 'r') as f:
             replies_list = f.read()
             replies_list = replies_list.split('\n')
             replies_list = list(filter(None, replies_list))
