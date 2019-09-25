@@ -202,7 +202,7 @@ def run_bot(r, subreddits_list, replies_list, posts_list):
         over18 = r.subreddit(sub).over18
         if over18 == False: submission.mod.sfw()
         else: nsfw = submission.mod.nsfw()
-        # data de crialção
+        # data de criação
         created_utc = int(r.subreddit(sub).created_utc)
         crea = 'criado em ' + datetime.utcfromtimestamp(created_utc).strftime('%d/%m/%Y às %H:%M:%S')
         # quantidade de moderadores
