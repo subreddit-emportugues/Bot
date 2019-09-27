@@ -1,4 +1,4 @@
-# Bot
+# Robô
 
 ## Descrição
 Robô do Reddit que realiza diversas atividades diferentes no subreddit [r/EmPortugues](https://www.reddit.com/r/EmPortugues/) em nome de [u/BoEmPortugues](https://www.reddit.com/user/BoEmPortugues/).
