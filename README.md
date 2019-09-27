@@ -36,39 +36,39 @@ for submission in r.subreddit('EmPortugues').new(limit=1000):
 Para alterar o comentário novo, em [bot.py](https://github.com/subreddit-emportugues/Bot/blob/master/bot.py), edite:
 ```
 comment = submission.reply(
-    "#" + subr + "\n\n" +
-    "___ \n\n" +
-    "**Descrição oficial:** " + desc + "\n\n" +
-    "**Data de criação:** " + crea + "\n\n" +
-    "**Quantidade de moderadores:** " + mods + "\n\n" +
-    "**Quantidade de membros:** " + subs + "\n\n" +
-    "**Disponibiliza wiki:** " + wiki  + "\n\n" +
-    "**Tipo de postagem:** " + subm  + "\n\n" +          
-    "**Mídias permitidas:** " + mult + "\n\n" + 
-    "**Disponibilidade de flairs:** " + pflair + "\n\n" + 
-    "**NSFW:** " + nsfw + "\n\n" +             
-    "**Versão antiga:** " + oldr + "\n\n" +
-    "___ \n\n" +
-    "^(Eu sou um bô, blipe, blupe. | [sub](https://www.reddit.com/r/EmPortugues) | [site](https://emportugues.org/) | [aplicativo](https://play.google.com/store/apps/details?id=org.emportugues.aplicativo) | [organização](https://github.com/subreddit-emportugues) | [mensagem](https://reddit.com/message/compose/?to=BoEmPortugues&subject=Eu não sou um bô.))")
+    '#' + subr + '\n\n' +
+    '___ \n\n' +
+    '**Descrição oficial:** ' + desc + '\n\n' +
+    '**Data de criação:** ' + crea + '\n\n' +
+    '**Quantidade de moderadores:** ' + mods + '\n\n' +
+    '**Quantidade de membros:** ' + subs + '\n\n' +
+    '**Disponibiliza wiki:** ' + wiki  + '\n\n' +
+    '**Tipo de postagem:** ' + subm  + '\n\n' +          
+    '**Mídias permitidas:** ' + mult + '\n\n' + 
+    '**Disponibilidade de flairs:** ' + pflair + '\n\n' + 
+    '**NSFW:** ' + nsfw + '\n\n' +             
+    '**Versão antiga:** ' + oldr + '\n\n' +
+    '___ \n\n' +
+    '^(Eu sou um bô, blipe, blupe. | [sub](https://www.reddit.com/r/EmPortugues) | [site](https://emportugues.org/) | [aplicativo](https://play.google.com/store/apps/details?id=org.emportugues.aplicativo) | [organização](https://github.com/subreddit-emportugues) | [mensagem](https://reddit.com/message/compose/?to=BoEmPortugues&subject=Eu não sou um bô.))')
 ```
 
 Para alterar o comentário editado, em [bot.py](https://github.com/subreddit-emportugues/Bot/blob/master/bot.py), edite:
 ```
 comment.edit(
-    "#" + subr + "\n\n" +
-    "___ \n\n" +
-    "**Descrição oficial:** " + desc + "\n\n" +
-    "**Data de criação:** " + crea + "\n\n" +
-    "**Quantidade de moderadores:** " + mods + "\n\n" +
-    "**Quantidade de membros:** " + subs + "\n\n" +
-    "**Disponibiliza wiki:** " + wiki  + "\n\n" +
-    "**Tipo de postagem:** " + subm  + "\n\n" +          
-    "**Mídias permitidas:** " + mult + "\n\n" + 
-    "**Disponibilidade de flairs:** " + pflair + "\n\n" + 
-    "**NSFW:** " + nsfw + "\n\n" +             
-    "**Versão antiga:** " + oldr + "\n\n" +
-    "___ \n\n" +
-    "^(Eu sou um bô, blipe, blupe. | [Sub](https://www.reddit.com/r/EmPortugues) | [Site](https://emportugues.org/) | [Aplicativo](https://play.google.com/store/apps/details?id=org.emportugues.aplicativo) | [Organização](https://github.com/subreddit-emportugues) | [Mensagem](https://reddit.com/message/compose/?to=BoEmPortugues&subject=Eu não sou um bô.))")
+    '#' + subr + '\n\n' +
+    '___ \n\n' +
+    '**Descrição oficial:** ' + desc + '\n\n' +
+    '**Data de criação:** ' + crea + '\n\n' +
+    '**Quantidade de moderadores:** ' + mods + '\n\n' +
+    '**Quantidade de membros:** ' + subs + '\n\n' +
+    '**Disponibiliza wiki:** ' + wiki  + '\n\n' +
+    '**Tipo de postagem:** ' + subm  + '\n\n' +          
+    '**Mídias permitidas:** ' + mult + '\n\n' + 
+    '**Disponibilidade de flairs:** ' + pflair + '\n\n' + 
+    '**NSFW:** ' + nsfw + '\n\n' +             
+    '**Versão antiga:** ' + oldr + '\n\n' +
+    '___ \n\n' +
+    '^(Eu sou um bô, blipe, blupe. | [Sub](https://www.reddit.com/r/EmPortugues) | [Site](https://emportugues.org/) | [Aplicativo](https://play.google.com/store/apps/details?id=org.emportugues.aplicativo) | [Organização](https://github.com/subreddit-emportugues) | [Mensagem](https://reddit.com/message/compose/?to=BoEmPortugues&subject=Eu não sou um bô.))')
 ```
 
 Para alterar flairs, em [bot.py](https://github.com/subreddit-emportugues/Bot/blob/master/bot.py), edite:
