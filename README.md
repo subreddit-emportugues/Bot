@@ -144,5 +144,5 @@ E [confira os kanbans deste projeto](https://github.com/orgs/subreddit-emportugu
 * Organização: https://github.com/subreddit-emportugues
 * Repositório: https://github.com/subreddit-emportugues/Bot
 * Projeto: https://github.com/orgs/subreddit-emportugues/projects/6
-* Equipe:
+* Equipe: https://github.com/orgs/subreddit-emportugues/teams/desenvolvedores
 * Licença:
