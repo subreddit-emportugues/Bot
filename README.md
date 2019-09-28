@@ -131,7 +131,7 @@ Você pode colaborar com este repositório!
 
 ## Demonstração
 
-[Conheça o robô para entender como funciona.](https://www.reddit.com/user/BoEmPortugues/) ![](/robo.gif)
+[Conheça o robô para entender como o código deste repositório funciona.](https://www.reddit.com/user/BoEmPortugues/) ![](/robo.gif)
 
 ## Referências
 
