@@ -18,19 +18,18 @@ As informações comentadas pelo robô são: `display_name_prefixed`, `public_de
 * [Referências](#Referências)
 
 ## Instalação
-1. Baixe o repositório;
-2. descomprima o arquivo;
-3. execute um interpretador de comandos;
-4. navegue até a pasta;
-5. e rode "py bot.py".
+1. Clone o repositório;
+2. execute um interpretador de comandos;
+3. navegue até a pasta;
+4. e rode `py bot.py`.
 
 ## Instruções
 Para alterar o subreddit, em [bot.py](https://github.com/subreddit-emportugues/robo/blob/master/bot.py), edite:
 ```
-for submission in r.subreddit('EmPortugues').new(limit=1000):
+17    for submission in r.subreddit('EmPortugues').new(limit=1000):
 ```
 ```
-for submission in r.subreddit('EmPortugues').new(limit=1000):
+234   for submission in r.subreddit('EmPortugues').new(limit=1000):
 ```
 
 Para alterar o comentário novo, em [bot.py](https://github.com/subreddit-emportugues/robo/blob/master/bot.py), edite:
@@ -131,7 +130,7 @@ Você pode colaborar com este repositório!
 
 ## Demonstração
 
-[Conheça o robô para entender como o código deste repositório funciona.](https://www.reddit.com/user/BoEmPortugues/) ![](/robo.gif)
+[Conheça o robô para entender como o código deste repositório funciona.](https://www.reddit.com/user/BoEmPortugues/)
 
 ## Referências
 
