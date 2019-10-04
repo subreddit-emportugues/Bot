@@ -140,4 +140,4 @@ Você pode colaborar com este projeto!
 * Repositório: https://github.com/subreddit-emportugues/robo
 * Projeto: https://github.com/orgs/subreddit-emportugues/projects/6
 * Equipe: https://github.com/orgs/subreddit-emportugues/teams/desenvolvedores
-* Licença:
+* Licença: https://github.com/subreddit-emportugues/robo/blob/master/LICENSE
