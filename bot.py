@@ -136,7 +136,7 @@ def run_bot(r, subreddits_list, replies_list, posts_list):
         public_description = r.subreddit(sub).public_description
         if public_description == '': desc = '?'
         if public_description != '': desc = '\"' + r.subreddit(sub).public_description.replace('\n', ' ') + '\"'            
-        # data de crialção
+        # data de criação
         created_utc = int(r.subreddit(sub).created_utc)
         crea = 'criado em ' + datetime.utcfromtimestamp(created_utc).strftime('%d/%m/%Y às %H:%M:%S')
         # quantidade de moderadores
