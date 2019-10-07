@@ -14,7 +14,7 @@ def __init__():
     
 def run_bot(r, subreddits_list, replies_list, posts_list):
     print ('1/5: conferindo novas postagens e criando lista temporária com novos subs...')
-    for submission in r.subreddit('EmPortugues').new(limit=1):
+    for submission in r.subreddit('EmPortugues').new(limit=1000):
         if submission.is_self is False:
             # subreddit
             submission_url = submission.url
