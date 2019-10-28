@@ -25,10 +25,10 @@ def run_bot(r, subreddits_list, replies_list, posts_list):
             if subreddit_name.startswith('https://reddit.com/r/'): sub_name = sub_url.replace('https://reddit.com/r/', '')
             sub = r.subreddit(sub_name).display_name
             if sub not in subreddits_list and submission.archived is False:
-                with open ('../data/temporary.txt', 'a') as f:
+                with open ('temporary.txt', 'w') as f:
                     f.write(submission.id + '\n')
     print ('2/5: comentando as postagens recentes e salvando subs, postagens e comentários...')
-    for post in reversed(open('../data/temporary.txt').readlines()):
+    for post in reversed(open('temporary.txt').readlines()):
         submission = r.submission(post)
         # subreddit
         submission_url = submission.url
@@ -119,8 +119,7 @@ def run_bot(r, subreddits_list, replies_list, posts_list):
                         f.write(submission.id + '\n')
             with open ('../data/replies.txt', 'a') as f:
                         f.write(comment.id + '\n')
-    with open('../data/temporary.txt', 'w') as f:
-        f.write("")
+    os.remove('temporary.txt')        
     print ('3/5: editando cada um dos comentários antigos salvos com informações recentes...')
     for reply in replies_list:
         comment = r.comment(reply)
