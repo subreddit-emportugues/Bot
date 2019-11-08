@@ -25,7 +25,7 @@ def run_bot(r, subreddits_list, replies_list, posts_list):
             if subreddit_name.startswith('https://reddit.com/r/'): sub_name = sub_url.replace('https://reddit.com/r/', '')
             sub = r.subreddit(sub_name).display_name
             if sub not in subreddits_list and submission.archived is False:
-                with open ('temporary.txt', 'w') as f:
+                with open ('temporary.txt', 'a') as f:
                     f.write(submission.id + '\n')
     print ('2/5: comentando as postagens recentes e salvando subs, postagens e comentários...')
     for post in reversed(open('temporary.txt').readlines()):
